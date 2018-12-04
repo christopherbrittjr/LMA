@@ -9,7 +9,7 @@ namespace LoginRegistration.Controllers
 {
     public class RegisterController : Controller
     {
-        UsersEntities db = new UsersEntities();
+        UsersEntities dbo = new UsersEntities();
 
         public ActionResult Index()
         {
@@ -17,7 +17,7 @@ namespace LoginRegistration.Controllers
         }
         public JsonResult SaveData(User model)
         {
-            db.Users.Add(model);
+            dbo.Users.Add(model);
             
             return Json("Registration Successfull", JsonRequestBehavior.AllowGet);
            
