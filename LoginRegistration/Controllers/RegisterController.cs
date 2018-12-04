@@ -13,5 +13,9 @@ namespace LoginRegistration.Controllers
         {
             return View();
         }
+        public JsonResult SaveData()
+        {
+
+        }
     }
 }

@@ -65,13 +65,13 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input class="form-control" type="text" name="Address1" id="address" placeholder="Address 1" />
+                            <input class="form-control" type="text" name="Address1" id="address1" placeholder="Address 1" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input class="form-control" type="text" name="Address2" id="address" placeholder="Address 2" />
+                            <input class="form-control" type="text" name="Address2" id="address2" placeholder="Address 2" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -123,5 +123,18 @@
     function SignUp()
     {
         $("#ShowModal").modal();
+    }
+    function SaveForm()
+    {
+        var data = $("Registration").serialize();
+        $.ajax({
+            type: "post",
+            data: data,
+            url: "/Register/SaveData",
+            success: function (result)
+            {
+
+            }
+        });
     }
 </script>
