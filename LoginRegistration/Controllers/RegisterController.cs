@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginRegistration.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,14 +9,18 @@ namespace LoginRegistration.Controllers
 {
     public class RegisterController : Controller
     {
-        // GET: Register
+        UsersEntities db = new UsersEntities();
+
         public ActionResult Index()
         {
             return View();
         }
-        public JsonResult SaveData()
+        public JsonResult SaveData(User model)
         {
-
+            db.Users.Add(model);
+            
+            return Json("Registration Successfull", JsonRequestBehavior.AllowGet);
+           
         }
     }
 }
