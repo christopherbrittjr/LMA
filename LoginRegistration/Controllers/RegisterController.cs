@@ -9,7 +9,7 @@ namespace LoginRegistration.Controllers
 {
     public class RegisterController : Controller
     {
-        UsersEntities dbo = new UsersEntities();
+        Model dbo = new Model();
 
         public ActionResult Index()
         {
