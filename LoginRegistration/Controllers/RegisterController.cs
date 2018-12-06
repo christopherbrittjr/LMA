@@ -18,7 +18,8 @@ namespace LoginRegistration.Controllers
         public JsonResult SaveData(User model)
         {
             dbo.Users.Add(model);
-            
+            dbo.SaveChanges();
+
             return Json("Registration Successfull", JsonRequestBehavior.AllowGet);
            
         }
