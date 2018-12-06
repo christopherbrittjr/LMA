@@ -47,6 +47,16 @@
             <div class="modal-header">
                 <a href="#" class="close" data-dismiss="modal">&times;</a>
                 <h4>Registration Form</h4>
+                <div id="message1">
+                    <div class="alert alert-success">
+                        <span class="glyphicon glyphicon-ok"></span><strong>Success Message! Your Registration Is Complete</strong>
+                    </div>
+                </div>
+                <div id="message2">
+                    <div class="alert alert-danger">
+                        <span class="glyphicon glyphicon-remove"></span><strong>Error Message! Your Registration Is Not Complete</strong>
+                    </div>
+                </div>
             </div>
             <div class="modal-body">
                 <form id="Registration">
@@ -123,9 +133,22 @@
     function SignUp()
     {
         $("#ShowModal").modal();
+        $("#message1").hide();
+        $("#message2").hide();
     }
     function SaveForm()
     {
+        var name = $("#user").val();
+        var pwd = $("#Password").val();
+        var email = $("#Email").val();
+
+        if (name == "" || pwd == "" || email == "")
+        {
+            $("#message1").hide();
+            $("#message2").show();
+            return false;
+        }
+
         var data = $("#Registration").serialize();
         $.ajax({
             type: "post",
@@ -133,7 +156,9 @@
             url: "/Register/SaveData",
             success: function (result)
             {
-                alert(result);
+                $("#message1").show();
+                $("#message2").hide();
+                $("#Registration")[0].reset();
             }
         });
     }
