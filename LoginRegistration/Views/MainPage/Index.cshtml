@@ -1,0 +1,190 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    var endTime = DateTime.UtcNow.AddSeconds(65);
+    var timeRemaining = TimeSpan.FromTicks(endTime.Ticks - DateTime.UtcNow.Ticks).TotalSeconds;
+}
+
+<style>
+
+    .column1 {
+        float: left;
+        width: 10%;
+        padding: 10px;
+        height: 25px;
+    }
+
+    .column2 {
+        float: right;
+        width: 20%;
+        height: 250px;
+    }
+
+    .column3 {
+        float: left;
+        height: 250px;
+        width: auto;
+        overflow: visible;
+        white-space: nowrap;
+    }
+
+    .column4 {
+        float: left;
+        width: 50%;
+        padding: 20px;
+        height: 300px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+@*<style>
+        .newspaper
+        {
+            -webkit-column-count: 3;
+            column-count: 3;
+            -webkit-column-gap: 40px;
+            column-gap: 40px;
+            column-rule-width: 1px;
+            word-wrap:normal;
+        }
+    </style>*@
+
+<h2><b>Little Man Auctions</b></h2>
+
+<div class="row">
+
+    <div class="col-sm-4">
+        <div class="column1">
+            <p>
+                <img src="~/images/laptop.png" alt="Laptop" style="width: 150px; height: 150px;" />
+            </p>
+        </div>
+
+        <p align="right" style="vertical-align: top;">
+            <div class="row">
+                <div class="col-md-10">
+                    <div align="right" style="vertical-align: central">
+                        <b>Time Remaining: </b><br />
+                        <span id="countdown" />
+                    </div>
+                </div>
+            </div>
+        </p>
+    </div>
+
+    <div class="col-sm-8">
+        <div style="height:245px;overflow-y:scroll">
+            <p>
+                Windows 10 operating system
+            </p>
+
+            <p>
+                Brings back the Start menu from Windows 7 and introduces new features, such as the Edge web browser that lets you mark up web pages on your screen.
+                13.3" Full HD 10-point multitouch screen for hands-on control.  The 1920 x 1080 resolution boasts impressive color and clarity.
+                Touch, tap, glide and make the most of Windows 10. IPS technology. LED backlight.
+            </p>
+
+            <p>
+                8th Gen Intel® Core™ i5-8250U mobile processor<br />
+                Ultra-low-voltage platform. Quad-core processor performance.
+            </p>
+
+            <p>
+                8GB system memory for advanced multitasking<br />
+                Substantial high-bandwidth DDR4 RAM lets you smoothly run your games and photo- and video-editing applications as well as multiple
+                programs and browser tabs at the same time.
+            </p>
+
+            <p>
+                256GB solid-state drive (SSD)<br />
+                While offering less storage space than a hard drive, a flash-based SSD has no moving parts, resulting in faster start-up times and data access,
+                no noise, reduced heat production and power draw on the battery.
+            </p>
+
+            <p>
+                360° flip-and-fold design<br />
+                Offers versatile functionality with laptop, audience, tabletop, presentation and tablet modes.
+            </p>
+
+            <p>
+                Intel® HD Integrated Graphics 620<br />
+                On-processor graphics with shared video memory provide everyday image quality for Internet use, basic photo editing and casual gaming.
+            </p>
+
+            <p>
+                Weighs 3.6 lbs. and is 0.6" thin<br />
+                Its ultraportable design features a smaller screen size to achieve a compact form factor.
+            </p>
+
+            <p>
+                Bluetooth interface synchronizes with compatible devices<br />
+                Wirelessly transfer photos, music and other media between the laptop and your Bluetooth-enabled cell phone or MP3 player, or connect Bluetooth wireless accessories.
+            </p>
+
+            <p>
+                One USB Type-C and two USB 3.1 Gen 1 ports maximize the latest high-speed devices<br />
+                Also includes one USB 2.0 port to connect more accessories and peripherals. The USB 3.1 ports are backward-compatible with USB 2.0 devices (at 2.0 speeds).
+            </p>
+
+            <p>
+                HDMI output expands your viewing options<br />
+                Connect an HDTV or high-definition monitor to set up two screens side by side or just see more of the big picture.
+            </p>
+
+            <p>
+                Built-in card reader for simple photo transfer<br />
+                Supports SD and MMC memory card formats. Additional microSD card slot on the display.
+            </p>
+
+            <p>
+                Dual-band wireless network connectivity<br />
+                High-speed wireless LAN is built into the screen, so it connects to your network or hotspots on all current Wi-Fi standards in both laptop and tablet modes.
+            </p>
+
+            <p>
+                Built-in webcam<br />
+                Makes it easy to video chat with family and friends or teleconference with colleagues over Skype or other popular applications.
+            </p>
+
+            <p>
+                Backlit keyboard<br />
+                Allows you to enjoy comfortable and accurate typing even in dim lighting.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    var upgradeTime = 1785600;
+    var seconds = upgradeTime;
+    function timer() {
+        var days = Math.floor(seconds / 24 / 60 / 60);
+        var hoursLeft = Math.floor((seconds) - (days * 86400));
+        var hours = Math.floor(hoursLeft / 3600);
+        var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+        var minutes = Math.floor(minutesLeft / 60);
+        var remainingSeconds = seconds % 60;
+        function pad(n) {
+            return (n < 10 ? "0" + n : n);
+        }
+        document.getElementById('countdown').innerHTML = pad(days) + "d " + pad(hours) + "h " + pad(minutes) + "m " + pad(remainingSeconds) + "s ";
+        if (seconds == 0) {
+            clearInterval(countdownTimer);
+            document.getElementById('countdown').innerHTML = "Auction has Ended";
+        } else {
+            seconds--;
+        }
+    }
+    var countdownTimer = setInterval('timer()', 1000);
+
+</script>
+

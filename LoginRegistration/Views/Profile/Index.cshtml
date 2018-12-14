@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@model LoginRegistration.Models.User
+
+<style>
+    * 
+    {
+        box-sizing: border-box;
+    }
+    .column1 
+    {
+        float: left;
+        width: 10%;
+        padding: 10px;
+        height: 250px;
+    }
+    .column2 
+    {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        height: 250px;
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+<h2>User's Profile</h2>
+
+<div class="row">
+    <div class="column1">        
+        <p>
+            First Name: <br />
+            Last Name: <br />
+            Address 1: <br />
+            Address 2: <br />
+            City: <br />
+            State: <br />
+            Zip: <br />
+            Username: <br />
+            Email: <br />
+            Password: <br />
+        </p>
+    </div>
+    <div class="column2">
+        <p>
+            @Html.DisplayFor(m => m.FirstName) <br />
+            @Html.DisplayFor(m => m.LastName) <br />
+            @Html.DisplayFor(m => m.Address1) <br />
+            @Html.DisplayFor(m => m.Address2) <br />
+            @Html.DisplayFor(m => m.City) <br />
+            @Html.DisplayFor(m => m.State) <br />
+            @Html.DisplayFor(m => m.Zip) <br />
+            @Html.DisplayFor(m => m.Username) <br />
+            @Html.DisplayFor(m => m.Email) <br />
+            @Html.DisplayFor(m => m.Password) <br />
+        </p>
+    </div>
+</div>
+
+
+
+
+
+
+
